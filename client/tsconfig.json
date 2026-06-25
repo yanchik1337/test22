@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    /* Язык и окружение */
+    "target": "es2020",
+    "lib": ["dom", "dom.iterable", "es2020"],
+
+    /* Обязательно для работы тегов React */
+    "jsx": "react-jsx",
+
+    /* Экспериментальные опции для классов MobX */
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+
+    /* Модули */
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "types": ["node"],
+    /* Строгий режим TypeScript для безопасности кода */
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+
+    /* Совместимость библиотек */
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  },
+  "include": ["src", "src/pages"]
+}
