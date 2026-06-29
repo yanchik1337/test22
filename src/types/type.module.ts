@@ -3,9 +3,9 @@ import { TypeController } from './type.controller';
 import { TypeService } from './type.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Type } from './type.entity';
-import { JwtModule } from '@nestjs/jwt';
+
 @Module({
-  imports: [TypeOrmModule.forFeature([Type]), JwtModule.register({})],
+  imports: [TypeOrmModule.forFeature([Type])],
   controllers: [TypeController],
   providers: [TypeService],
 })

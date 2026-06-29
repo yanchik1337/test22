@@ -4,9 +4,7 @@ import {
   Get,
   Post,
   HttpCode,
-  Req,
   UseGuards,
-  Request,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { RegUserDto } from './dto/registrationUser.dto';
@@ -27,6 +25,7 @@ export class UserController {
   login(@Body() body: LogUserDto) {
     return this.userService.login(body);
   }
+
   @Get('auth')
   @UseGuards(AuthGuard)
   check(@User() user: any) {

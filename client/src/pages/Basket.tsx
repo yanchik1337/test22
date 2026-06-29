@@ -18,7 +18,6 @@ const Basket = observer(() => {
   }, [device]);
 
   const handleUpdateQuantity = async ({ deviceId, action }: IAction) => {
-    console.log('deviceId:', deviceId, 'action:', action);
     try {
       device.setDeviceQuantity({ deviceId, action });
       const updatedData = await updateQuantityAPI(deviceId, action);
@@ -114,7 +113,7 @@ const Basket = observer(() => {
                 variant="outline-dark"
                 onClick={() =>
                   handleUpdateQuantity({
-                    deviceId: item.device?.id,
+                    deviceId: item.id,
                     action: 'plus',
                   })
                 }
@@ -125,7 +124,7 @@ const Basket = observer(() => {
                 variant="outline-dark"
                 onClick={() =>
                   handleUpdateQuantity({
-                    deviceId: item.device?.id,
+                    deviceId: item.id,
                     action: 'minus',
                   })
                 }

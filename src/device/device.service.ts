@@ -84,11 +84,10 @@ export class DeviceService {
       throw new BadRequestException(e);
     }
   }
-  async deleteDevice(params: any) {
-    const { id } = params;
+  async deleteDevice(id: number) {
     let result;
     try {
-      result = await this.deviceRepository.softDelete({ id: Number(id) });
+      result = await this.deviceRepository.softDelete({ id });
     } catch (e) {
       throw new ConflictException();
     }

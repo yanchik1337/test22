@@ -34,10 +34,9 @@ export class BasketController {
   @Put()
   @UseGuards(AuthGuard)
   async updateQuantity(
-    @User() user: any,
+    @User() userId: number,
     @Body() body: { deviceId: number; action: 'plus' | 'minus' },
   ) {
-    const userId = user.id;
     const { deviceId, action } = body;
     return await this.basketService.updateQuantity({
       userId,

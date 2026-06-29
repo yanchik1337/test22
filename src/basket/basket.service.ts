@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   Injectable,
   InternalServerErrorException,
   NotFoundException,
@@ -98,9 +99,7 @@ export class BasketService {
         if (basketDevice.quantity > 1) {
           basketDevice.quantity -= 1;
         } else {
-          throw new InternalServerErrorException(
-            'Количество не может быть меньше 1',
-          );
+          throw new BadRequestException('Количество не может быть меньше 1');
         }
       }
       await this.basketDeviceRepository.save(basketDevice);

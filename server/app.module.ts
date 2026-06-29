@@ -33,7 +33,6 @@ import { UserModule } from '../src/users/user.module';
     RaitingModule,
     BrandModule,
     UserModule,
-    RaitingModule,
   ],
   controllers: [],
   providers: [],

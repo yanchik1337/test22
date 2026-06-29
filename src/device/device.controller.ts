@@ -9,12 +9,16 @@ import {
   Post,
   Query,
   UploadedFile,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { DeviceService } from './device.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { extname, resolve } from 'path';
 import { randomUUID } from 'crypto';
+import { Roles } from '../decorators/roles.decorator';
+import { AuthGuard } from '../guards/auth.guard';
+import { CheckRoleGuard } from '../guards/checkrole.guard';
 @Controller('device')
 export class DeviceController {
   constructor(private readonly deviceService: DeviceService) {}
@@ -27,6 +31,9 @@ export class DeviceController {
   getAll(@Query() query: any) {
     return this.deviceService.getAll(query);
   }
+
+  @UseGuards(AuthGuard, CheckRoleGuard)
+  @Roles('ADMIN')
   @Post('')
   @UseInterceptors(
     FileInterceptor('img', {
@@ -43,8 +50,10 @@ export class DeviceController {
     return this.deviceService.create(body, img);
   }
 
+  @UseGuards(AuthGuard, CheckRoleGuard)
+  @Roles('ADMIN')
   @Delete('/:id')
-  deleteDevice(@Param() params: number) {
-    return this.deviceService.deleteDevice(params);
+  deleteDevice(@Param('id', ParseIntPipe) id: number) {
+    return this.deviceService.deleteDevice(id);
   }
 }

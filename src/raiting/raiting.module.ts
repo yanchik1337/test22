@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { JwtModule } from '@nestjs/jwt';
 import { RaitingController } from './raiting.controller';
 import { RaitingService } from './raiting.service';
 import { Raiting } from './raiting.entity';

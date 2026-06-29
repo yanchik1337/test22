@@ -62,19 +62,21 @@ const NavBar = observer(() => {
         <Nav className="ms-auto align-items-center gap-2">
           {user.isAuth ? (
             <>
-              <Button
-                variant="link"
-                onClick={() => navigate(ADMIN_ROUTE)}
-                style={{
-                  color: '#1a1a1a',
-                  fontWeight: 500,
-                  fontSize: 14,
-                  textDecoration: 'none',
-                  padding: '6px 12px',
-                }}
-              >
-                Админ
-              </Button>
+              {user.user.role === 'ADMIN' && (
+                <Button
+                  variant="link"
+                  onClick={() => navigate(ADMIN_ROUTE)}
+                  style={{
+                    color: '#1a1a1a',
+                    fontWeight: 500,
+                    fontSize: 14,
+                    textDecoration: 'none',
+                    padding: '6px 12px',
+                  }}
+                >
+                  Админ
+                </Button>
+              )}
 
               <Button
                 variant="link"

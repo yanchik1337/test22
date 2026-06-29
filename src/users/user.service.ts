@@ -36,7 +36,7 @@ export class UserService {
     const hashPassword = await bcrypt.hash(password, 5);
     const user = await this.userRepository.save({
       email,
-      role,
+      role: 'USER',
       password: hashPassword,
     });
     const basket = await this.basketRepository.save({
